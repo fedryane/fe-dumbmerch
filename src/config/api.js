@@ -2,7 +2,7 @@ import axios from "axios";
 
 // creating base URL
 export const API = axios.create({
-  baseURL: "http://localhost:8080/api/v1",
+  baseURL: proccess.env.SERVER_URL || "https://dumb-merch-fedryan.herokuapp.com/api/v1" || "https://localhost:8080/api/v1",
 });
 
 export const setAuthToken = (token) => {
