@@ -16,7 +16,7 @@ function UserComplain() {
 
   // connect to server in useEffect function
   useEffect(() => {
-    socket = io("http://localhost:8080", {
+    socket = io("https://dumb-merch-fedryan.herokuapp.com", {
       auth: {
         token: localStorage.getItem("token"), // we must set options to get access to socket server
       },
