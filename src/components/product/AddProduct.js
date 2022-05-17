@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Col,Button } from "react-bootstrap";
+import { Col, Button } from "react-bootstrap";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { API } from "../../config/api";
@@ -68,6 +68,7 @@ const AddProducts = () => {
       const config = {
         headers: {
           "Content-type": "multipart/form-data",
+          Authorization: "Basic " + localStorage.token,
         },
       };
 
@@ -97,7 +98,7 @@ const AddProducts = () => {
   // }, []);
   return (
     <Col>
-    <Navbar/>
+      <Navbar />
       <form onSubmit={(e) => handleSubmit.mutate(e)}>
         {preview && (
           <div>
