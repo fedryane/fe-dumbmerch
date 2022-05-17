@@ -34,15 +34,19 @@ function DetailProduct() {
   // }, []);
 
   // Fetching product data from database
-  let { data: product, refetch } = useQuery("productCache", async () => {
-    const config = {
-      method: "GET",
-      headers: {
-        Authorization: "Basic " + localStorage.token,
-      },
-    };
-    const response = await API.get("/product/" + id, config);
-    return response.data.data.products;
+  // let { data: product, refetch } = useQuery("productCache", async () => {
+  //   const config = {
+  //     method: "GET",
+  //     headers: {
+  //       Authorization: "Basic " + localStorage.token,
+  //     },
+  //   };
+  //   const response = await API.get("/product/" + id, config);
+  //   return response.data.data.products;
+  // });
+  let { data: product } = useQuery("productCache", async () => {
+    const response = await API.get("/product/" + id);
+    return response.data.data;
   });
 
   // Create config Snap payment page with useEffect here ...
@@ -64,8 +68,11 @@ function DetailProduct() {
     };
   }, []);
 
-  const handleBuy = async () => {
+  const handleBuy = useMutation(async (e) => {
     try {
+      e.preventDefault();
+      // const handleBuy = async () => {
+      //   try {
       // Get data from product
 
       const data = {
@@ -117,7 +124,7 @@ function DetailProduct() {
     } catch (error) {
       console.log(error);
     }
-  };
+  });
 
   return (
     <div>
@@ -134,7 +141,7 @@ function DetailProduct() {
             <p className="text-content-product-detail mt-4 text-white">{product?.desc}</p>
             <h3 className="text-price-product-detail text-end mt-4 fw-bolder text-danger">{Rupiah.convert(product?.price)}</h3>
             <div className="d-grid gap-2 mt-5">
-              <Button onClick={handleBuy} className="btn btn-danger">
+              <Button onClick={(e) => handleBuy.mutate(e)} className="btn btn-danger">
                 Buy
               </Button>
             </div>
