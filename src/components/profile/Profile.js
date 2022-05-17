@@ -64,13 +64,13 @@ const Profile = () => {
 
             <Col className="col-sm-12 col-md-12 col-lg-5 mb-sm-5 mb-lg-0">
               <h5 className="text-var-red mb-4">My Transaction</h5>
-              {transactions?.length > 0 ? (
+              {transactions?.length !== 0 ? (
                 <>
                   <table className="bg-var-dark-gray d-flex rounded">
                     <tbody className="container-fluid">
                       {transactions?.map((item, index) => (
                         <tr className="d-flex justify-content-between align-items-center pt-2 pb-2">
-                          <td className="d-flex ">
+                          <td className="d-flex" key={index}>
                             <img src={item.product.image} className="image-list-product pe-3" />
                             <div>
                               <span className="fw-bold text-var-red ">{item.product.name}</span>
