@@ -91,6 +91,7 @@ const AddProducts = () => {
       setisLoading(false);
       navigate("/product");
     } catch (error) {
+      setisLoading(false);
       console.log(error);
     }
   });

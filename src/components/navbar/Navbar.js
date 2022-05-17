@@ -137,7 +137,7 @@ const Navbar = () => {
                   </NavLink>
                 </li>
                 <Nav>
-                  <div class=" fs-5 mt-3 change-theme " id="darkBtn" onClick={changeTheme} style={{ cursor: "pointer" }}>
+                  <div class=" fs-5 mt-2 change-theme " id="darkBtn" onClick={changeTheme} style={{ cursor: "pointer" }}>
                     {" "}
                     🌛
                   </div>

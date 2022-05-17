@@ -9,8 +9,8 @@ const EditProduct = function () {
   let navigate = useNavigate();
   const { id } = useParams();
   const [isLoading, setisLoading] = useState(false);
-  const [categories, setCategories] = useState([]); //Store all category data
-  const [categoryId, setCategoryId] = useState([]); //Save the selected category id
+  // const [categories, setCategories] = useState([]); //Store all category data
+  // const [categoryId, setCategoryId] = useState([]); //Save the selected category id
   const [preview, setPreview] = useState(null); //For image preview
   const [product, setProduct] = useState({}); //Store product data
   const [form, setForm] = useState({
@@ -110,6 +110,7 @@ const EditProduct = function () {
       navigate("/product");
       console.log(response.data);
     } catch (error) {
+      setisLoading(false);
       console.log(error);
     }
   });
@@ -147,15 +148,15 @@ const EditProduct = function () {
         <input className="input mt-4" type="number" name="price" placeholder="Price" onChange={handleChange} value={form?.price}></input>
         <input className="input mt-4" type="number" name="qty" placeholder="Stock" onChange={handleChange} value={form?.qty}></input>
         <div className="d-grid gap-2 mt-4">
-        {!isLoading ? (
-          <Button className="blinkers" type="submit" variant="success" size="md">
-            Add
-          </Button>
-        ) : (
-          <Button className="blink" type="submit" variant="success" size="md">
-            Adding some data
-          </Button>
-        )}
+          {!isLoading ? (
+            <Button className="blinkers" type="submit" variant="success" size="md">
+              Add
+            </Button>
+          ) : (
+            <Button className="blink" type="submit" variant="success" size="md">
+              Adding some data
+            </Button>
+          )}
         </div>
       </form>
     </Col>
