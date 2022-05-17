@@ -46,7 +46,7 @@ function DetailProduct() {
   // });
   let { data: product } = useQuery("productCache", async () => {
     const response = await API.get("/product/" + id);
-    return response.data.data;
+    return response.data.data.products;
   });
 
   // Create config Snap payment page with useEffect here ...
