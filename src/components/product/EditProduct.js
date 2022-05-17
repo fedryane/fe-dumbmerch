@@ -8,7 +8,7 @@ import { Button, Col } from "react-bootstrap";
 const EditProduct = function () {
   let navigate = useNavigate();
   const { id } = useParams();
-
+  const [isLoading, setisLoading] = useState(false);
   const [categories, setCategories] = useState([]); //Store all category data
   const [categoryId, setCategoryId] = useState([]); //Save the selected category id
   const [preview, setPreview] = useState(null); //For image preview
@@ -71,8 +71,7 @@ const EditProduct = function () {
   const handleChange = (e) => {
     setForm({
       ...form,
-      [e.target.name]:
-        e.target.type === "file" ? e.target.files : e.target.value,
+      [e.target.name]: e.target.type === "file" ? e.target.files : e.target.value,
     });
 
     // Create image url for preview
@@ -83,6 +82,7 @@ const EditProduct = function () {
   };
 
   const handleSubmit = useMutation(async (e) => {
+    setisLoading(true);
     try {
       e.preventDefault();
 
@@ -105,11 +105,8 @@ const EditProduct = function () {
       formData.set("categoryId", categoryId);
 
       // Insert product data
-      const response = await API.patch(
-        "/product/" + product.id,
-        formData,
-        config
-      );
+      const response = await API.patch("/product/" + product.id, formData, config);
+      setisLoading(false);
       navigate("/product");
       console.log(response.data);
     } catch (error) {
@@ -141,51 +138,24 @@ const EditProduct = function () {
             />
           </div>
         )}
-        <input
-          onChange={handleChange}
-          type="file"
-          id="upload"
-          name="image"
-          hidden
-        />
+        <input onChange={handleChange} type="file" id="upload" name="image" hidden />
         <label className="file" for="upload">
           Upload File
         </label>
-        <input
-          className="input mt-4"
-          type="text"
-          name="name"
-          placeholder="Product Name"
-          onChange={handleChange}
-          value={form?.name}
-        ></input>
-        <textarea
-          className="input mt-4"
-          name="desc"
-          placeholder="Product Descriptions"
-          onChange={handleChange}
-          value={form?.desc}
-        ></textarea>
-        <input
-          className="input mt-4"
-          type="number"
-          name="price"
-          placeholder="Price"
-          onChange={handleChange}
-          value={form?.price}
-        ></input>
-        <input
-          className="input mt-4"
-          type="number"
-          name="qty"
-          placeholder="Stock"
-          onChange={handleChange}
-          value={form?.qty}
-        ></input>
+        <input className="input mt-4" type="text" name="name" placeholder="Product Name" onChange={handleChange} value={form?.name}></input>
+        <textarea className="input mt-4" name="desc" placeholder="Product Descriptions" onChange={handleChange} value={form?.desc}></textarea>
+        <input className="input mt-4" type="number" name="price" placeholder="Price" onChange={handleChange} value={form?.price}></input>
+        <input className="input mt-4" type="number" name="qty" placeholder="Stock" onChange={handleChange} value={form?.qty}></input>
         <div className="d-grid gap-2 mt-4">
-          <Button type="submit" variant="success" size="md">
-            Save
+        {!isLoading ? (
+          <Button className="blinkers" type="submit" variant="success" size="md">
+            Add
           </Button>
+        ) : (
+          <Button className="blink" type="submit" variant="success" size="md">
+            Adding some data
+          </Button>
+        )}
         </div>
       </form>
     </Col>

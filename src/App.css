@@ -21,3 +21,152 @@ body {
 .bg-var-green {
   background-color: var(--green) !important;
 }
+
+/* Light Mode */
+.bg-var-dark {
+  background-color: var(--dark) !important;
+}
+.bg-var-red {
+  background-color: var(--red) !important;
+}
+.bg-var-gray {
+  background-color: var(--gray) !important;
+}
+.bg-var-green {
+  background-color: var(--green) !important;
+}
+.light-theme {
+  background-color: #fff !important;
+}
+
+.light-theme .profile-content {
+  color: black !important;
+}
+.light-theme #root {
+  color: #0b0b0b !important;
+}
+.light-theme .text-navbar {
+  color: rgba(75, 75, 75, 0.8) !important;
+}
+.light-theme .card-bg {
+  background-color: rgba(134, 133, 133, 0.7) !important;
+}
+.light-theme .navbar-toggler {
+  background-color: rgba(75, 75, 75, 0.3);
+  padding: 2px 3px;
+}
+.light-theme .contact:hover {
+  background-color: rgba(134, 133, 133, 0.7) !important;
+}
+.light-theme .contact-active,
+.light-theme .chat-me,
+.light-theme .chat-other {
+  background-color: rgb(128, 124, 124);
+  color: white !important;
+}
+.light-theme .chat-me::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  right: -15px;
+  border-top: 15px solid transparent;
+  border-left: 20px solid #807c7c;
+  border-bottom: 15px solid transparent;
+}
+.light-theme .chat-other::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: -15px;
+  border-top: 15px solid transparent;
+  border-right: 20px solid #807c7c;
+  border-bottom: 15px solid transparent;
+}
+.light-theme .change-theme {
+  color: rgba(247, 77, 77, 1);
+}
+.light-theme .input-message {
+  color: #3d3d3d;
+}
+.light-theme .text-content-product-detail {
+  color: black !important;
+}
+
+.light-theme .nav-link {
+  color: black !important;
+}
+.light-theme #profile {
+  color: rgb(44, 42, 42) !important;
+}
+
+.tabel-transaction {
+  background-color: #212529;
+  color: white;
+}
+
+.status-transaction-success {
+  background-color: green !important ;
+  text-transform: capitalize;
+}
+
+.status-transaction-pending {
+  background-color: #b6910c !important ;
+  text-transform: capitalize;
+}
+
+.status-transaction-failed {
+  background-color: red !important ;
+  text-transform: capitalize;
+}
+
+.light-theme .input {
+  width: 100%;
+  background: rgba(57, 56, 56, 0.25);
+  border: 2px solid #000000;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 5px 10px;
+  color: #000000;
+}
+.light-theme .main {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 56px;
+  line-height: 76px;
+  color: #000000;
+}
+.light-theme .sub {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 25px;
+
+  color: rgb(252, 0, 0);
+}
+.light-theme .form input {
+  background: rgba(0, 30, 255, 0.25);
+  border: 2px solid #000000;
+  box-sizing: border-box;
+  border-radius: 5px;
+  width: 100%;
+  color: #ff0000;
+}
+
+/* Blink Animation */
+.blink {
+  text-decoration: blink;
+  -webkit-animation-name: blinker;
+  -webkit-animation-duration: 1.5s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-in-out;
+  -webkit-animation-direction: alternate;
+}
+
+@-webkit-keyframes blinker {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.5;
+  }
+}

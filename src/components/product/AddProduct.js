@@ -7,7 +7,7 @@ import Navbar from "../navbar/Navbar";
 
 const AddProducts = () => {
   let navigate = useNavigate();
-
+  const [isLoading, setisLoading] = useState(false);
   // const [categories, setCategories] = useState([]); //Store all category data
   // const [categoryId, setCategoryId] = useState([]); //Save the selected category id
   const [preview, setPreview] = useState(null); //For image preview
@@ -61,6 +61,7 @@ const AddProducts = () => {
   };
 
   const handleSubmit = useMutation(async (e) => {
+    setisLoading(true);
     try {
       e.preventDefault();
 
@@ -87,6 +88,7 @@ const AddProducts = () => {
       const response = await API.post("/product", formData, config);
       console.log(response);
 
+      setisLoading(false);
       navigate("/product");
     } catch (error) {
       console.log(error);
@@ -122,9 +124,15 @@ const AddProducts = () => {
         <input className="input mt-4" type="number" name="price" placeholder="Price" onChange={handleChange}></input>
         <input className="input mt-4" type="number" name="qty" placeholder="Stock" onChange={handleChange}></input>
         <div className="d-grid gap-2 mt-4">
-          <Button type="submit" variant="success" size="md">
-            Add
-          </Button>
+          {!isLoading ? (
+            <Button className="blinkers" type="submit" variant="success" size="md">
+              Add
+            </Button>
+          ) : (
+            <Button className="blink" type="submit" variant="success" size="md">
+              Adding some data
+            </Button>
+          )}
         </div>
       </form>
     </Col>

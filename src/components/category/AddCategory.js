@@ -8,7 +8,6 @@ import Navbar from "../navbar/Navbar";
 function AddCategory() {
   let navigate = useNavigate();
   const [category, setCategory] = useState("");
-
   const title = "Category admin";
   document.title = "DumbMerch | " + title;
 
