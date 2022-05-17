@@ -8,8 +8,8 @@ import Navbar from "../navbar/Navbar";
 const AddProducts = () => {
   let navigate = useNavigate();
   const [isLoading, setisLoading] = useState(false);
-  // const [categories, setCategories] = useState([]); //Store all category data
-  // const [categoryId, setCategoryId] = useState([]); //Save the selected category id
+  const [categories, setCategories] = useState([]); //Store all category data
+  const [categoryId, setCategoryId] = useState([]); //Save the selected category id
   const [preview, setPreview] = useState(null); //For image preview
   const [form, setForm] = useState({
     image: "",
