@@ -149,9 +149,15 @@ const EditProduct = function () {
         <input className="input mt-4" type="number" name="price" placeholder="Price" onChange={handleChange} value={form?.price}></input>
         <input className="input mt-4" type="number" name="qty" placeholder="Stock" onChange={handleChange} value={form?.qty}></input>
         <div className="d-grid gap-2 mt-4">
-          <Button className="blinkers" type="submit" variant="success" size="md">
-            Add
-          </Button>
+          {!isLoading ? (
+            <Button className="blinkers" type="submit" variant="success" size="md">
+              Add
+            </Button>
+          ) : (
+            <Button className="blink" type="submit" variant="success" size="md">
+              Adding some data
+            </Button>
+          )}
         </div>
       </form>
     </Col>
