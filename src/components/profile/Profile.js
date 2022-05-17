@@ -10,20 +10,24 @@ const Profile = () => {
   const title = "Profile";
   document.title = "Dumbmers | " + title;
 
-  const [transactions, setTransaction] = useState([]);
+  // const [transactions, setTransaction] = useState([]);
 
   const [state] = useContext(UserContext);
 
-  const getTransactios = async () => {
+  // const getTransactios = async () => {
+  //   const response = await API.get("/transactions");
+  //   setTransaction(response.data.data);
+  // };
+  let { data: transactions } = useQuery("transactionsCache", async () => {
     const response = await API.get("/transactions");
-    setTransaction(response.data.data);
-  };
+    return response.data.data;
+  });
 
   console.log(transactions);
 
-  useEffect(() => {
-    getTransactios();
-  }, []);
+  // useEffect(() => {
+  //   getTransactios();
+  // }, []);
 
   return (
     <>
@@ -72,7 +76,7 @@ const Profile = () => {
                               <span className="fw-bold text-var-red ">{item.product.name}</span>
                               <small className="text-var-red d-block mb-3">{item.createdAt} WIB</small>
                               <span className=" d-inline-block">Price: {item.product.price}</span>
-                              <span className=" d-inline-block"> Status: {item.status}</span>
+                              <span className={`status-transaction-${item.status} h-100 rounded d-flex justify-content-center align-items-center fw-bold`}>{item.status}</span>
                             </div>
                           </td>
                           <td className="pe-3">
